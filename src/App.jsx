@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, TextField, Typography, Box } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
@@ -29,9 +29,30 @@ const theme = createTheme({
 });
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [incrementStep, setIncrementStep] = useState(1);
-  const [decrementStep, setDecrementStep] = useState(1);
+  const [count, setCount] = useState(() => {
+    const savedCount = localStorage.getItem('count');
+    return savedCount !== null ? JSON.parse(savedCount) : 0;
+  });
+  const [incrementStep, setIncrementStep] = useState(() => {
+    const savedIncrementStep = localStorage.getItem('incrementStep');
+    return savedIncrementStep !== null ? JSON.parse(savedIncrementStep) : 1;
+  });
+  const [decrementStep, setDecrementStep] = useState(() => {
+    const savedDecrementStep = localStorage.getItem('decrementStep');
+    return savedDecrementStep !== null ? JSON.parse(savedDecrementStep) : 1;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('count', count);
+  }, [count]);
+
+  useEffect(() => {
+    localStorage.setItem('incrementStep', incrementStep);
+  }, [incrementStep]);
+
+  useEffect(() => {
+    localStorage.setItem('decrementStep', decrementStep);
+  }, [decrementStep]);
 
   const handleIncrement = () => {
     setCount(prevCount => prevCount + incrementStep);
