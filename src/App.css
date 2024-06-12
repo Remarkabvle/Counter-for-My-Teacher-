@@ -1,0 +1,33 @@
+.App {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.counter {
+  font-size: 24px;
+  margin: 20px;
+}
+
+.controls {
+  margin: 20px;
+}
+
+.controls div {
+  margin-bottom: 10px;
+}
+
+.controls label {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.controls input {
+  font-size: 18px;
+  width: 100px;
+  text-align: center;
+}
+
+.controls button {
+  font-size: 18px;
+  padding: 5px 10px;
+}
